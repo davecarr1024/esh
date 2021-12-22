@@ -1,0 +1,10 @@
+/home/davecarr/projects/esh/esh/bin/Debug/netstandard2.0/esh.deps.json
+/home/davecarr/projects/esh/esh/bin/Debug/netstandard2.0/esh.dll
+/home/davecarr/projects/esh/esh/bin/Debug/netstandard2.0/esh.pdb
+/home/davecarr/projects/esh/esh/obj/Debug/netstandard2.0/esh.csproj.AssemblyReference.cache
+/home/davecarr/projects/esh/esh/obj/Debug/netstandard2.0/esh.GeneratedMSBuildEditorConfig.editorconfig
+/home/davecarr/projects/esh/esh/obj/Debug/netstandard2.0/esh.AssemblyInfoInputs.cache
+/home/davecarr/projects/esh/esh/obj/Debug/netstandard2.0/esh.AssemblyInfo.cs
+/home/davecarr/projects/esh/esh/obj/Debug/netstandard2.0/esh.csproj.CoreCompileInputs.cache
+/home/davecarr/projects/esh/esh/obj/Debug/netstandard2.0/esh.dll
+/home/davecarr/projects/esh/esh/obj/Debug/netstandard2.0/esh.pdb
