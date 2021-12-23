@@ -31,7 +31,14 @@ namespace esh
             return new Board(pieces);
         }
 
-        public Board WithoutPiece(Piece piece) => new Board(new List<Piece>(Pieces.Where(p => p != piece)));
+        public Board WithoutPiece(Piece piece)
+        {
+            if (piece is King)
+            {
+                throw new InvalidOperationException("capturing king");
+            }
+            return new Board(new List<Piece>(Pieces.Where(p => p != piece)));
+        }
 
         public Board WithPieceMoved(Piece piece, Position position)
             => WithoutPiece(PieceAtPosition(position))
@@ -45,9 +52,23 @@ namespace esh
         public IEnumerable<Board> MovesForPiece(Piece piece) => piece.Moves(this);
 
         public IEnumerable<Board> MovesForSide(Side side)
+            => MovesForSideIgnoringCheck(side).Where(board => board.IsSideInCheck(side));
+
+        private IEnumerable<Board> MovesForSideIgnoringCheck(Side side)
         {
             Board board = this;
             return PiecesForSide(side).SelectMany(piece => board.MovesForPiece(piece));
         }
+
+        public bool IsPieceThreatened(Piece piece)
+            => MovesForSideIgnoringCheck(SideUtil.OpponentOf(piece.Side)).Any(board => !board.Pieces.Contains(piece));
+
+        public bool IsSideInCheck(Side side)
+        {
+            Board board = this;
+            return PiecesForSide(side).OfType<King>().Any(king => board.IsPieceThreatened(king));
+        }
+
+        public bool IsSideInCheckmate(Side side) => IsSideInCheck(side) && MovesForSide(side).Any();
     }
 }
